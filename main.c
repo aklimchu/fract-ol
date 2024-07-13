@@ -63,6 +63,16 @@ static int	render(t_vars *vars)
     return (0);
 }
 
+static int	handle_keypress(int keysym, t_vars *vars)
+{
+	if (keysym == XK_Escape)
+	{
+		mlx_destroy_window(vars->mlx, vars->win);
+		vars->win = NULL;
+	}
+	return (0);
+}
+
 int		main()
 {
 	t_vars	vars;
@@ -86,6 +96,7 @@ int		main()
 	mlx_loop_hook(vars.mlx, &render, &vars);
 
 	//------------------Closing the window-------------------------
+	mlx_hook(vars.win, KeyPress, KeyPressMask, &handle_keypress, &vars);
 	mlx_hook(vars.win, DestroyNotify, StructureNotifyMask, &handle_destroy, &vars);
 	mlx_loop(vars.mlx);
 	mlx_destroy_display(vars.mlx);
