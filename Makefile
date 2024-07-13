@@ -28,7 +28,8 @@ LIBFT_DIR	= libft/
 LIBFT_LIB	= $(LIBFT_DIR)/libft.a
 
 # Source / OBJ files / Includes
-SRC 		= main.c
+SRC 		= main.c choose_color.c \
+			tools.c
 OBJ 		= $(SRC:.c=.o)
 INCLUDE		= -I "./"
 

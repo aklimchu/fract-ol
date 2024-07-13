@@ -1,9 +1,8 @@
-#include "fract-ol.h"
-#define GREEN_PIXEL 0x0000FF00	//delete
-#define BLACK_PIXEL 0x00000000	//delete
-#define MAXCOUNT 30 			//delete
+// + headers
 
-void	fractal(t_data *img, double left_f, double top_f, double right_f, double bottom_f)
+#include "fract-ol.h"
+
+static void	fractal(t_data *img, double left_f, double top_f, double right_f, double bottom_f)
 {
 	t_complex	scale;
 	t_complex	z;
@@ -34,7 +33,7 @@ void	fractal(t_data *img, double left_f, double top_f, double right_f, double bo
 			{
 				if (z.real * z.real + z.imag * z.imag >= 4)
 				{
-					my_mlx_pixel_put(img, x, y, BLACK_PIXEL);
+					my_mlx_pixel_put(img, x, y, choose_color(count));
 					flag_c = 1;
 					break ;
 				}
@@ -51,7 +50,7 @@ void	fractal(t_data *img, double left_f, double top_f, double right_f, double bo
 	}
 }
 
-int	render(t_vars *vars)
+static int	render(t_vars *vars)
 {
 	if (vars->win == NULL)
 		return (1);

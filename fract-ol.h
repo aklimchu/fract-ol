@@ -24,6 +24,12 @@
 # define B(a) (a) & 0xFF
 # define RGB(a, b, c) ((a) << 16) + ((b) << 8) + (c)
 
+# define GREEN_PIXEL 0x0000FF00	//delete
+# define BLACK_PIXEL 0x00000000	//delete
+# define WHITE_PIXEL 0x00FFFFFF	//delete
+# define RED_PIXEL	0x00FF0000	//delete
+# define MAXCOUNT 30 			//delete
+
 typedef struct  s_complex
 {
     double  real;
@@ -57,64 +63,10 @@ typedef struct s_rect
 
 /* The x and y coordinates of the rect corresponds to its upper left corner. */
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
-
-int	handle_destroy(t_vars *vars)
-{
-	mlx_destroy_window(vars->mlx, vars->win);
-	vars->win = NULL;
-	return (0);
-}
-
-int render_rect(t_data *img, t_rect rect)
-{
-	int	i;
-    int j;
-
-    i = rect.y;
-    while (i < rect.y + rect.height)
-    {
-        j = rect.x;
-        while (j < rect.x + rect.width)
-            my_mlx_pixel_put(img, j++, i, rect.color);
-        ++i;
-    }
-    return (0);
-}
-
-int	draw_rect(t_data *img, t_rect rect)
-{
-	int x;
-	int y;
-	
-	x = rect.x;
-	y = rect.y;
-	while (x < rect.x + rect.width)
-	{
-		my_mlx_pixel_put(img, x, y, rect.color);
-		x++;
-	}
-	while (y < rect.y + rect.height)
-	{
-		my_mlx_pixel_put(img, x, y, rect.color);
-		y++;
-	}
-	while (x > rect.x)
-	{
-		my_mlx_pixel_put(img, x, y, rect.color);
-		x--;
-	}
-	while (y > rect.y)
-	{
-		my_mlx_pixel_put(img, x, y, rect.color);
-		y--;
-	}
-}
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int	handle_destroy(t_vars *vars);
+int render_rect(t_data *img, t_rect rect);
+int	draw_rect(t_data *img, t_rect rect);
+int	choose_color(int count);
 
 #endif
