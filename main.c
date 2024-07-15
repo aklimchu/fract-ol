@@ -1,67 +1,16 @@
-// + headers
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/15 08:48:28 by aklimchu          #+#    #+#             */
+/*   Updated: 2024/07/15 15:20:18 by aklimchu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fract-ol.h"
-
-static void	fractal(t_data *img, double left_f, double top_f, double right_f, double bottom_f)
-{
-	t_complex	scale;
-	t_complex	z;
-	t_complex	c;
-	double		tmp_real;
-	int			x, y;
-	int			maxx, maxy, count;
-	int			flag_c;
-	
-	maxx = 1919;
-	maxy = 1079;
-	scale.real = (right_f - left_f) / maxx;
-    scale.imag = (bottom_f - top_f) / maxy;
-	draw_rect(img, (t_rect){0, 0, maxx, maxy, GREEN_PIXEL});
-	y = 1;
-	while (y <= maxy - 1)
-	{
-		x = 1;
-		while (x <= maxx - 1)
-		{
-			c.real = x * scale.real + left_f;
-			c.imag = y * scale.imag + top_f;
-			z.real = 0;
-			z.imag = 0;
-			flag_c = 0;
-			count = 0;
-			while (count < MAXCOUNT)
-			{
-				if (z.real * z.real + z.imag * z.imag >= 4)
-				{
-					my_mlx_pixel_put(img, x, y, choose_color(count));
-					flag_c = 1;
-					break ;
-				}
-				tmp_real = z.real * z.real - z.imag * z.imag + c.real;
-				z.imag = 2 * z.real * z.imag + c.imag;
-				z.real = tmp_real;
-				count++;
-			}
-			if (flag_c == 0)
-				my_mlx_pixel_put(img, x, y, GREEN_PIXEL);
-			x++;
-		}
-		y++;
-	}
-}
-
-static int	render(t_vars *vars)
-{
-	if (vars->win == NULL)
-		return (1);
-	double	left_f = -2;
-	double	top_f = -1;
-	double	right_f = 2;
-	double	bottom_f = 1;
-	fractal(&vars->img, left_f, top_f, right_f, bottom_f);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
-    return (0);
-}
 
 static int	handle_keypress(int keysym, t_vars *vars)
 {
@@ -73,10 +22,31 @@ static int	handle_keypress(int keysym, t_vars *vars)
 	return (0);
 }
 
-int		main()
+static int mouse_hook(int button, int x, int y, t_vars *vars)
+{
+   	int a, b;
+	a = x +1;
+	b = y + 1;
+	// delete ^^^^
+	
+	if (button == 4)
+	    vars->zoom *= 1.1; // Zoom in
+	if (button == 5)
+    {
+		vars->zoom /= 1.1; // Zoom out
+	}
+	return (0);
+}
+
+int		main(int argc, char *argv[])
 {
 	t_vars	vars;
 
+	// checking the passed parameters
+
+	if (argc == 1)
+		return (0);
+	
 	//------------------Creating the window---------------------------
 	vars.mlx = mlx_init();
 	if (vars.mlx == NULL)
@@ -93,8 +63,21 @@ int		main()
 		&vars.img.line_length, &vars.img.endian);
 	
 	//------------------Drawing fractal-----------------------------
-	mlx_loop_hook(vars.mlx, &render, &vars);
-
+	if (ft_strncmp(argv[1], "Mandelbrod", ft_strlen(argv[1])) == 0 || \
+		ft_strncmp(argv[1], "M", ft_strlen(argv[1])) == 0)
+	{
+		vars.zoom = 1.0;
+		mlx_loop_hook(vars.mlx, &render_man, &vars);
+	}
+	if (ft_strncmp(argv[1], "Julia", ft_strlen(argv[1])) == 0 || \
+		ft_strncmp(argv[1], "J", ft_strlen(argv[1])) == 0)
+	{
+		vars.x_jul = ft_atoi_double(argv[2]);
+		vars.y_jul = ft_atoi_double(argv[3]);
+		vars.zoom = 1.3;
+		mlx_loop_hook(vars.mlx, &render_jul, &vars);
+	}
+	mlx_mouse_hook(vars.win, mouse_hook, &vars);
 	//------------------Closing the window-------------------------
 	mlx_hook(vars.win, KeyPress, KeyPressMask, &handle_keypress, &vars);
 	mlx_hook(vars.win, DestroyNotify, StructureNotifyMask, &handle_destroy, &vars);

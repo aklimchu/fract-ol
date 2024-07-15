@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:31:32 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/10 10:53:09 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/15 15:17:34 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "./libft/libft.h"
 
 # define R(a) (a) >> 16
 # define G(a) ((a) >> 8) & 0xFF
@@ -49,24 +50,30 @@ typedef struct	s_vars
 {
 	void	*mlx;
 	void	*win;
+	double	zoom;
+	double	x_jul;
+	double	y_jul;
 	t_data	img;
 }				t_vars;
 
-typedef struct s_rect
+typedef struct	s_rect
 {
     int	x;
     int	y;
     int width;
     int height;
     int color;
-}	t_rect;
+}				t_rect;
 
 /* The x and y coordinates of the rect corresponds to its upper left corner. */
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int	handle_destroy(t_vars *vars);
-int render_rect(t_data *img, t_rect rect);
-int	draw_rect(t_data *img, t_rect rect);
-int	choose_color(int count);
+int		handle_destroy(t_vars *vars);
+int 	render_rect(t_data *img, t_rect rect);
+int		draw_rect(t_data *img, t_rect rect);
+int		choose_color(int count);
+int		render_man(t_vars *vars);
+int		render_jul(t_vars *vars);
+double	ft_atoi_double(const char *str);
 
 #endif

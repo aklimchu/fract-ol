@@ -1,4 +1,15 @@
-/* The x and y coordinates of the rect corresponds to its upper left corner. */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/15 08:48:36 by aklimchu          #+#    #+#             */
+/*   Updated: 2024/07/15 09:21:34 by aklimchu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fract-ol.h"
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
@@ -59,4 +70,5 @@ int	draw_rect(t_data *img, t_rect rect)
 		my_mlx_pixel_put(img, x, y, rect.color);
 		y--;
 	}
+	return (0);
 }

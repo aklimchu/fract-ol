@@ -6,7 +6,7 @@
 #    By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/24 11:18:05 by aklimchu          #+#    #+#              #
-#    Updated: 2024/07/10 10:25:59 by aklimchu         ###   ########.fr        #
+#    Updated: 2024/07/15 15:21:06 by aklimchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME		= fract-ol
 
 # Compiler
 CC 			= cc
-CFLAGS		= -w -Wall -Wextra -Werror -I $(LIBFT_DIR)
+CFLAGS		= -Wall -Wextra -Werror -I $(LIBFT_DIR)
 RM			= rm -f
 
 # Minilibx
@@ -29,7 +29,8 @@ LIBFT_LIB	= $(LIBFT_DIR)/libft.a
 
 # Source / OBJ files / Includes
 SRC 		= main.c choose_color.c \
-			tools.c
+			tools.c fractals.c \
+			ft_atoi_double.c
 OBJ 		= $(SRC:.c=.o)
 INCLUDE		= -I "./"
 

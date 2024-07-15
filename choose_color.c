@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   choose_color.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/15 08:48:49 by aklimchu          #+#    #+#             */
+/*   Updated: 2024/07/15 08:48:50 by aklimchu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fract-ol.h"
 
 static int	get_t(int trgb)
@@ -54,7 +66,7 @@ int	choose_color(int count)
 		return (add_shade(0.8, RED_PIXEL));
 	if (count >= MAXCOUNT / 5 * 4 && count <= MAXCOUNT)
 		return (add_shade(1, RED_PIXEL));*/
-	if (count >= 0 && count < MAXCOUNT / 10)
+	if (count >= 0 && count < MAXCOUNT / 20)
 		return (add_shade(0, RED_PIXEL));
 	i = 1;
 	while (i < 21)
@@ -63,5 +75,5 @@ int	choose_color(int count)
 			return (add_shade(0.05 * i, RED_PIXEL));
 		i++;
 	}
-	return (0);
+	return (0); 
 }
