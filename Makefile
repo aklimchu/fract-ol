@@ -6,16 +6,16 @@
 #    By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/24 11:18:05 by aklimchu          #+#    #+#              #
-#    Updated: 2024/07/15 15:21:06 by aklimchu         ###   ########.fr        #
+#    Updated: 2024/07/16 11:30:16 by aklimchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Program name
-NAME		= fract-ol
+NAME		= fractol
 
 # Compiler
 CC 			= cc
-CFLAGS		= -Wall -Wextra -Werror -I $(LIBFT_DIR)
+CFLAGS		= -Wall -Wextra -Werror -ggdb3 -I $(LIBFT_DIR)
 RM			= rm -f
 
 # Minilibx
@@ -30,7 +30,8 @@ LIBFT_LIB	= $(LIBFT_DIR)/libft.a
 # Source / OBJ files / Includes
 SRC 		= main.c choose_color.c \
 			tools.c fractals.c \
-			ft_atoi_double.c
+			ft_atoi_double.c check_input.c \
+			trgb.c
 OBJ 		= $(SRC:.c=.o)
 INCLUDE		= -I "./"
 

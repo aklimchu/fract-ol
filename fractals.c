@@ -6,13 +6,14 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:48:24 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/15 14:04:45 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/16 11:54:14 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract-ol.h"
+#include "fractol.h"
 
-static void	fractal_man(t_data *img, double left_f, double top_f, double right_f, double bottom_f)
+static void	fractal_man(t_data *img, double left_f, double top_f, \
+	double right_f, double bottom_f)
 {
 	t_complex	scale;
 	t_complex	z;
@@ -21,11 +22,11 @@ static void	fractal_man(t_data *img, double left_f, double top_f, double right_f
 	int			x, y;
 	int			maxx, maxy, count;
 	int			flag_c;
-	
+
 	maxx = 1919;
 	maxy = 1079;
 	scale.real = (right_f - left_f) / maxx;
-    scale.imag = (bottom_f - top_f) / maxy;
+	scale.imag = (bottom_f - top_f) / maxy;
 	draw_rect(img, (t_rect){0, 0, maxx, maxy, GREEN_PIXEL});
 	y = 1;
 	while (y <= maxy - 1)
@@ -62,18 +63,24 @@ static void	fractal_man(t_data *img, double left_f, double top_f, double right_f
 
 int	render_man(t_vars *vars)
 {
+	double	left_f;
+	double	top_f;
+	double	right_f;
+	double	bottom_f;
+
 	if (vars->win == NULL)
 		return (1);
-	double	left_f = -2 * vars->zoom;
-	double	top_f = -1 * vars->zoom;
-	double	right_f = 2 * vars->zoom;
-	double	bottom_f = 1 * vars->zoom;
+	left_f = -2 * vars->zoom;
+	top_f = -1 * vars->zoom;
+	right_f = 2 * vars->zoom;
+	bottom_f = 1 * vars->zoom;
 	fractal_man(&vars->img, left_f, top_f, right_f, bottom_f);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
-    return (0);
+	return (0);
 }
 
-static void	fractal_jul(t_vars *vars, double left_f, double top_f, double right_f, double bottom_f)
+static void	fractal_jul(t_vars *vars, double left_f, \
+double top_f, double right_f, double bottom_f)
 {
 	t_complex	scale;
 	t_complex	z;
@@ -82,11 +89,11 @@ static void	fractal_jul(t_vars *vars, double left_f, double top_f, double right_
 	int			x, y;
 	int			maxx, maxy, count;
 	int			flag_c;
-	
+
 	maxx = 1919;
 	maxy = 1079;
 	scale.real = (right_f - left_f) / maxx;
-    scale.imag = (bottom_f - top_f) / maxy;
+	scale.imag = (bottom_f - top_f) / maxy;
 	draw_rect(&vars->img, (t_rect){0, 0, maxx, maxy, GREEN_PIXEL});
 	y = 1;
 	while (y <= maxy - 1)
@@ -123,12 +130,17 @@ static void	fractal_jul(t_vars *vars, double left_f, double top_f, double right_
 
 int	render_jul(t_vars *vars)
 {
+	double	left_f;
+	double	top_f;
+	double	right_f;
+	double	bottom_f;
+
 	if (vars->win == NULL)
 		return (1);
-	double	left_f = -2 * vars->zoom;
-	double	top_f = -1 * vars->zoom;
-	double	right_f = 2 * vars->zoom;
-	double	bottom_f = 1 * vars->zoom;
+	left_f = -2 * vars->zoom;
+	top_f = -1 * vars->zoom;
+	right_f = 2 * vars->zoom;
+	bottom_f = 1 * vars->zoom;
 	fractal_jul(vars, left_f, top_f, right_f, bottom_f);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
     return (0);

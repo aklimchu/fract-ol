@@ -1,2 +1,2 @@
-# Fract-ol
-Fract-ol
+# fractol
+fractol
