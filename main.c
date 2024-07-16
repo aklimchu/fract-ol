@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:48:28 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/16 11:57:25 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/16 13:49:33 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,14 @@ static void	create_window(t_vars *vars)
 	vars->mlx = mlx_init();
 	if (vars->mlx == NULL)
 		exit (EXIT_FAILURE);
-	vars->win = mlx_new_window(vars->mlx, 1920, 1080, "Hello world!");
+	vars->win = mlx_new_window(vars->mlx, SCREEN_W, SCREEN_H, "Fractol");
 	if (vars->win == NULL)
 	{
 		mlx_destroy_display(vars->mlx);
 		free(vars->mlx);
 		exit (EXIT_FAILURE);
 	}
-	vars->img.img = mlx_new_image(vars->mlx, 1920, 1080);
+	vars->img.img = mlx_new_image(vars->mlx, SCREEN_W, SCREEN_H);
 	vars->img.addr = mlx_get_data_addr(vars->img.img, \
 		&vars->img.bits_per_pixel, &vars->img.line_length, &vars->img.endian);
 }

@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:31:32 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/16 11:31:25 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/16 14:34:12 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,32 @@
 # define WHITE_PIXEL 0x00FFFFFF
 # define RED_PIXEL 0x00FF0000
 # define MAXCOUNT 30
+# define SCREEN_W 1920
+# define SCREEN_H 1080
 
 typedef struct s_complex
 {
-	double	real;
-	double	imag;
+	double		real;
+	double		imag;
 }				t_complex;
+
+typedef struct s_dim
+{
+	double	left_f;
+	double	top_f;
+	double	right_f;
+	double	bottom_f;
+}				t_dim;
+
+typedef struct s_calc
+{
+	t_complex	c;
+	t_complex	scale;
+	t_complex	z;
+	int			x;
+	int			y;
+	t_dim		dim;
+}				t_calc;
 
 typedef struct s_data
 {

@@ -6,19 +6,19 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:43:20 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/16 11:13:21 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/16 14:34:33 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <stddef.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <limits.h>
-#include <stdarg.h>
-#include <stdint.h>
+# include <stddef.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <limits.h>
+# include <stdarg.h>
+# include <stdint.h>
 
 int		ft_printf(const char *format, ...);
 int		ft_putnbr_ui(unsigned int num, int count);
