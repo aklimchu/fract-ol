@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:17:30 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/16 11:30:16 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/17 09:57:51 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ int	check_param(int argc, char *argv[])
 	if ((ft_strncmp(argv[1], "Julia", ft_strlen(argv[1])) == 0 || \
 		ft_strncmp(argv[1], "J", ft_strlen(argv[1])) == 0) && argc == 4)
 	{
-		if (check_double(argv[2]) == 0 && check_double(argv[3]) == 0)
+		if (check_double(argv[2]) == 0 && check_double(argv[3]) == 0 \
+		&& ft_atoi_double(argv[2]) >= -2 && ft_atoi_double(argv[2]) <= 2 \
+		&& ft_atoi_double(argv[23]) >= -2 && ft_atoi_double(argv[3]) <= 2)
 			return (0);
 	}
 	return (1);

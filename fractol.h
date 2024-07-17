@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:31:32 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/16 14:34:12 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/17 12:51:27 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,9 @@
 # include "./mlx_linux/mlx_int.h"
 # include <math.h>
 # include <stdlib.h>
-# include <stdio.h>
+# include <stdio.h>	//delete
 # include "./libft/libft.h"
 
-# define GREEN_PIXEL 0x0000FF00	// can we use according to Norm?
-# define BLACK_PIXEL 0x00000000
-# define WHITE_PIXEL 0x00FFFFFF
-# define RED_PIXEL 0x00FF0000
 # define MAXCOUNT 30
 # define SCREEN_W 1920
 # define SCREEN_H 1080
@@ -42,7 +38,7 @@ typedef struct s_dim
 	double	bottom_f;
 }				t_dim;
 
-typedef struct s_calc
+/*typedef struct s_calc
 {
 	t_complex	c;
 	t_complex	scale;
@@ -50,7 +46,7 @@ typedef struct s_calc
 	int			x;
 	int			y;
 	t_dim		dim;
-}				t_calc;
+}				t_calc;*/
 
 typedef struct s_data
 {
@@ -68,6 +64,14 @@ typedef struct s_vars
 	double	zoom;
 	double	x_jul;
 	double	y_jul;
+	t_complex	c;
+	t_complex	scale;
+	t_complex	z;
+	int			x;
+	int			y;
+	double		shiftx;
+	double		shifty;
+	t_dim		dim;
 	t_data	img;
 }				t_vars;
 
@@ -93,5 +97,6 @@ int		get_t(int trgb);
 int		get_r(int trgb);
 int		get_g(int trgb);
 int		get_b(int trgb);
+void 	free_everything(t_data *img, t_vars *vars, int exit_code);
 
 #endif /* FRACT_OL_H */

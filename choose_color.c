@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:48:49 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/16 11:30:16 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/17 11:34:53 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,18 @@ int	choose_color(int count)
 	int		i;
 
 	if (count >= 0 && count < MAXCOUNT / 20)
-		return (add_shade(0, RED_PIXEL));
+		return (add_shade(0, 0x00ff6d2b));
 	i = 1;
+	while (i < 11)
+	{
+		if (count >= MAXCOUNT / 20 * i && count < MAXCOUNT / 20 * (i + 1))
+			return (add_shade(0.05 * i, 0x00ff6d2b));
+		i++;
+	}
 	while (i < 21)
 	{
 		if (count >= MAXCOUNT / 20 * i && count < MAXCOUNT / 20 * (i + 1))
-			return (add_shade(0.05 * i, RED_PIXEL));
+			return (add_shade(0.05 * i, 0x00854442));
 		i++;
 	}
 	return (0);

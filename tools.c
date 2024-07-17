@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:48:36 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/16 11:42:02 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/17 10:38:57 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int	handle_destroy(t_vars *vars)
 {
-	mlx_destroy_window(vars->mlx, vars->win);
-	vars->win = NULL;
+	free_everything(vars->img.img, vars, 0);
 	return (0);
 }
 
@@ -59,4 +58,18 @@ int	draw_rect(t_data *img, t_rect rect)
 	while (y > rect.y)
 		my_mlx_pixel_put(img, x, y--, rect.color);
 	return (0);
+}
+
+void free_everything(t_data *img, t_vars *vars, int exit_code)
+{
+	if (img)
+		mlx_destroy_image(vars->mlx, vars->img.img);
+	mlx_destroy_window(vars->mlx, vars->win);
+	vars->win = NULL;
+	mlx_destroy_display(vars->mlx);
+	free(vars->mlx);
+	if (exit_code == 0)
+		exit(EXIT_SUCCESS);
+	if (exit_code == 1)
+		exit(EXIT_FAILURE);
 }
