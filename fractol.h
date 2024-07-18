@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:31:32 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/18 14:28:51 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/18 15:13:09 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_vars
 	int			x;
 	int			y;
 	int			times;
+	int			addtimes;
 	double		shiftx;
 	double		shifty;
 	t_dim		dim;

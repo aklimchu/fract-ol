@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 11:26:03 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/18 15:02:22 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/18 15:13:34 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,15 @@ int	render_pyth(t_vars *vars)
 {
 	if (vars->win == NULL)
 		return (1);
+/* 	vars->a.x = (600 + vars->shiftx) * vars->zoom;
+	vars->a.y = (600 + vars->shiftx) * vars->zoom;
+	vars->b.x = (700 + vars->shifty) * vars->zoom;
+	vars->b.y = (700 + vars->shifty) * vars->zoom; */
+	vars->times = (1 + vars->addtimes);
+	vars->a.x = 600;
+	vars->a.y = 600;
+	vars->b.x = 700;
+	vars->b.y = 700;
 	draw_rect(&vars->img, (t_rect){0, 0, SCREEN_W - 1, \
 		SCREEN_H - 1, 0x0069fe48});
 	fractal_pyth(vars, vars->a, vars->b, vars->times);

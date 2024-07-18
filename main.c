@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:48:28 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/18 15:02:41 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/18 15:14:03 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	main(int argc, char *argv[])
 
 static int	handle_keypress(int keysym, t_vars *vars)
 {
+	if (keysym == XK_q)
+		vars->addtimes += 1;
 	if (keysym == XK_Left)
 		vars->shiftx = vars->shiftx + 0.1;
 	if (keysym == XK_Right)
@@ -85,6 +87,7 @@ static int	mouse_hook(int button, int x, int y, t_vars *vars)
 		printf("%f\n", vars->scale.real);	// delete
 		printf("%f\n", vars->dim.left_f);	// delete
 		printf("%f\n", vars->dim.right_f);	// delete */
+		
 		if (fabs(x * vars->scale.real + vars->dim.left_f - vars->dim.left_f) <= fabs(vars->dim.right_f - x * vars->scale.real - vars->dim.left_f))
 			vars->shiftx = vars->shiftx - fabs(x * vars->scale.real /* + vars->dim.left_f */ - vars->dim.left_f) / 20 /* * vars->zoom */ ;
 		if (fabs(x * vars->scale.real + vars->dim.left_f - vars->dim.left_f) > fabs(vars->dim.right_f - x * vars->scale.real - vars->dim.left_f))
@@ -150,11 +153,8 @@ static void	draw_fractal(t_vars *vars, char *argv[])
 	if (ft_strncmp(argv[1], "pythagoras", ft_strlen(argv[1])) == 0 || \
 		ft_strncmp(argv[1], "p", ft_strlen(argv[1])) == 0)
 	{
-		vars->times = 10;
-		vars->a.x = 600;
-		vars->a.y = 600;
-		vars->b.x = 700;
-		vars->b.y = 700;
+		vars->zoom = 1;
+		vars->addtimes = 0;
 		mlx_loop_hook(vars->mlx, &render_pyth, vars);
 	}
 	mlx_mouse_hook(vars->win, mouse_hook, vars);
