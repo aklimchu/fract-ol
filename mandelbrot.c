@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:48:24 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/17 13:29:47 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/18 10:50:10 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	fractal_man_tools(t_data *img, t_vars *vars)
 	{
 		if (vars->z.real * vars->z.real + vars->z.imag * vars->z.imag >= 4)
 		{
-			my_mlx_pixel_put(img, vars->x, vars->y, choose_color(count));
+			my_mlx_pixel_put(img, vars->x, vars->y, choose_color(count, vars->colors.inside, vars->colors.outside));
 			flag_c = 1;
 			break ;
 		}

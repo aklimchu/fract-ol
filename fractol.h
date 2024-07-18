@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:31:32 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/17 12:51:27 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:28:51 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,15 @@
 
 typedef struct s_complex
 {
-	double		real;
-	double		imag;
+	double	real;
+	double	imag;
 }				t_complex;
+
+typedef struct s_colors
+{
+	int	inside;
+	int	outside;
+}				t_colors;
 
 typedef struct s_dim
 {
@@ -57,22 +63,32 @@ typedef struct s_data
 	int		endian;
 }				t_data;
 
+typedef struct s_pyth
+{
+	double	x;
+	double	y;
+}				t_pyth;
+
 typedef struct s_vars
 {
-	void	*mlx;
-	void	*win;
-	double	zoom;
-	double	x_jul;
-	double	y_jul;
+	void		*mlx;
+	void		*win;
+	double		zoom;
+	double		x_jul;
+	double		y_jul;
+	t_pyth		a;
+	t_pyth		b;
 	t_complex	c;
 	t_complex	scale;
 	t_complex	z;
+	t_colors	colors;
 	int			x;
 	int			y;
+	int			times;
 	double		shiftx;
 	double		shifty;
 	t_dim		dim;
-	t_data	img;
+	t_data		img;
 }				t_vars;
 
 typedef struct s_rect
@@ -88,7 +104,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		handle_destroy(t_vars *vars);
 int		render_rect(t_data *img, t_rect rect);
 int		draw_rect(t_data *img, t_rect rect);
-int		choose_color(int count);
+int		choose_color(int count, int color_inside, int color_outside);
 int		render_man(t_vars *vars);
 int		render_jul(t_vars *vars);
 double	ft_atoi_double(const char *str);
@@ -98,5 +114,6 @@ int		get_r(int trgb);
 int		get_g(int trgb);
 int		get_b(int trgb);
 void 	free_everything(t_data *img, t_vars *vars, int exit_code);
+int		render_pyth(t_vars *vars);
 
 #endif /* FRACT_OL_H */

@@ -6,7 +6,7 @@
 #    By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/24 11:18:05 by aklimchu          #+#    #+#              #
-#    Updated: 2024/07/17 11:57:36 by aklimchu         ###   ########.fr        #
+#    Updated: 2024/07/18 13:22:47 by aklimchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME		= fractol
 
 # Compiler
 CC 			= cc
-CFLAGS		= -Wall -Wextra -Werror -I $(LIBFT_DIR)
+CFLAGS		= -Wall -Wextra -Werror -ggdb3 -I $(LIBFT_DIR)
 RM			= rm -f
 
 # Minilibx
@@ -31,7 +31,7 @@ LIBFT_LIB	= $(LIBFT_DIR)/libft.a
 SRC 		= main.c choose_color.c \
 			tools.c mandelbrot.c \
 			ft_atoi_double.c check_input.c \
-			trgb.c julia.c
+			trgb.c julia.c pythagoras.c
 OBJ 		= $(SRC:.c=.o)
 INCLUDE		= -I "./"
 
