@@ -21,8 +21,10 @@
 # include "./libft/libft.h"
 
 # define MAXCOUNT 30
-# define SCREEN_W 1920
-# define SCREEN_H 1080
+# define MAXTIMES 10
+# define SCREEN_W 800 // 1080
+# define SCREEN_H 800 // 1080
+# define ZOOM 1.1
 
 typedef struct s_complex
 {
@@ -38,21 +40,15 @@ typedef struct s_colors
 
 typedef struct s_dim
 {
-	double	left_f;
-	double	top_f;
+	double	scale_r;
+	double	scale_i;
 	double	right_f;
+	double	left_f;
 	double	bottom_f;
+	double	top_f;
+	double	center_r;	// delete?
+	double	center_i;	// delete?
 }				t_dim;
-
-/*typedef struct s_calc
-{
-	t_complex	c;
-	t_complex	scale;
-	t_complex	z;
-	int			x;
-	int			y;
-	t_dim		dim;
-}				t_calc;*/
 
 typedef struct s_data
 {
@@ -61,6 +57,7 @@ typedef struct s_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		color;
 }				t_data;
 
 typedef struct s_pyth
@@ -73,7 +70,6 @@ typedef struct s_vars
 {
 	void		*mlx;
 	void		*win;
-	double		zoom;
 	double		x_jul;
 	double		y_jul;
 	t_pyth		a;
@@ -86,8 +82,6 @@ typedef struct s_vars
 	int			y;
 	int			times;
 	int			addtimes;
-	double		shiftx;
-	double		shifty;
 	t_dim		dim;
 	t_data		img;
 }				t_vars;
@@ -114,7 +108,10 @@ int		get_t(int trgb);
 int		get_r(int trgb);
 int		get_g(int trgb);
 int		get_b(int trgb);
-void 	free_everything(t_data *img, t_vars *vars, int exit_code);
+void	free_everything(t_data *img, t_vars *vars, int exit_code);
 int		render_pyth(t_vars *vars);
+int		gradient(int startcolor, int endcolor, int len, int pos);
+void	mouse_zoom(t_dim *dim, int x, int y, double zoom);
+void	shift_fract(t_dim *dim, double shiftx, double shifty);
 
 #endif /* FRACT_OL_H */

@@ -60,7 +60,7 @@ int	draw_rect(t_data *img, t_rect rect)
 	return (0);
 }
 
-void free_everything(t_data *img, t_vars *vars, int exit_code)
+void	free_everything(t_data *img, t_vars *vars, int exit_code)
 {
 	if (img)
 		mlx_destroy_image(vars->mlx, vars->img.img);

@@ -12,57 +12,35 @@
 
 #include "fractol.h"
 
-static void	draw_line(t_data *img, t_pyth a, t_pyth b)
+static void	draw_line(t_data *img, t_pyth a, t_pyth b);
+
+static void	draw_next_point(t_data *img, t_pyth a, t_pyth b, t_pyth d);
+
+static void	fractal_pyth(t_vars *vars, t_pyth a, t_pyth b, int times);
+
+int	render_pyth(t_vars *vars)
 {
-	
-	double		x;
-	double		y;
-	double	diff_x;
-	double	diff_y;
-	int		pixels;
-	
-	diff_x = b.x - a.x;
-	diff_y = b.y - a.y;	
-	pixels = sqrt(diff_x * diff_x + diff_y * diff_y);
-	diff_x /= pixels;
-	diff_y /= pixels;
-	x = a.x;
-	y = a.y;
-	while (pixels)
-	{
-		my_mlx_pixel_put(img, x, y, 0x0069fe48);
-		x += diff_x;
-		y += diff_y;
-		--pixels;
-	}
+	if (vars->win == NULL)
+		return (1);
+	vars->a.x = 300;
+	vars->a.y = 300;
+	vars->b.x = 350;
+	vars->b.y = 350;
+	vars->times = (1 + vars->addtimes);
+	draw_rect(&vars->img, (t_rect){0, 0, SCREEN_W - 1, \
+		SCREEN_H - 1, 0x0069fe48});
+	fractal_pyth(vars, vars->a, vars->b, vars->times);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
+	return (0);
 }
 
-static void draw_next_point(t_data *img, t_pyth a, t_pyth b, t_pyth d)
-{
-	double	diff_x;
-	double	diff_y;
-	int		pixels;
-
-	diff_x = d.x - a.x;
-	diff_y = d.y - a.y;	
-	pixels = sqrt(diff_x * diff_x + diff_y * diff_y);
-	diff_x /= pixels;
-	diff_y /= pixels;
-	a.x += diff_x;
-	a.y += diff_y;
-	b.x += diff_x;
-	b.y += diff_y;
-	draw_line(img, a, b);
-	if (pixels > 1)
-		draw_next_point(img, a, b, d);
-}
-
-static void fractal_pyth(t_vars *vars, t_pyth a, t_pyth b, int times)
+static void	fractal_pyth(t_vars *vars, t_pyth a, t_pyth b, int times)
 {
 	t_pyth	c;
 	t_pyth	d;
 	t_pyth	e;
 
+	vars->img.color = gradient(0x00562952, 0x00F8FA70, MAXTIMES + 1, times);
 	c.x = b.x - (a.y - b.y);
 	c.y = b.y - (b.x - a.x);
 	d.x = a.x - (a.y - b.y);
@@ -81,22 +59,46 @@ static void fractal_pyth(t_vars *vars, t_pyth a, t_pyth b, int times)
 	}
 }
 
-int	render_pyth(t_vars *vars)
+static void	draw_line(t_data *img, t_pyth a, t_pyth b)
 {
-	if (vars->win == NULL)
-		return (1);
-/* 	vars->a.x = (600 + vars->shiftx) * vars->zoom;
-	vars->a.y = (600 + vars->shiftx) * vars->zoom;
-	vars->b.x = (700 + vars->shifty) * vars->zoom;
-	vars->b.y = (700 + vars->shifty) * vars->zoom; */
-	vars->times = (1 + vars->addtimes);
-	vars->a.x = 600;
-	vars->a.y = 600;
-	vars->b.x = 700;
-	vars->b.y = 700;
-	draw_rect(&vars->img, (t_rect){0, 0, SCREEN_W - 1, \
-		SCREEN_H - 1, 0x0069fe48});
-	fractal_pyth(vars, vars->a, vars->b, vars->times);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
-	return (0);
+	double	x;
+	double	y;
+	double	diff_x;
+	double	diff_y;
+	int		pixels;
+
+	diff_x = b.x - a.x;
+	diff_y = b.y - a.y;
+	pixels = sqrt(diff_x * diff_x + diff_y * diff_y);
+	diff_x /= pixels;
+	diff_y /= pixels;
+	x = a.x;
+	y = a.y;
+	while (pixels)
+	{
+		my_mlx_pixel_put(img, x, y, img->color);
+		x += diff_x;
+		y += diff_y;
+		--pixels;
+	}
+}
+
+static void	draw_next_point(t_data *img, t_pyth a, t_pyth b, t_pyth d)
+{
+	double	diff_x;
+	double	diff_y;
+	int		pixels;
+
+	diff_x = d.x - a.x;
+	diff_y = d.y - a.y;
+	pixels = sqrt(diff_x * diff_x + diff_y * diff_y);
+	diff_x /= pixels;
+	diff_y /= pixels;
+	a.x += diff_x;
+	a.y += diff_y;
+	b.x += diff_x;
+	b.y += diff_y;
+	draw_line(img, a, b);
+	if (pixels > 1)
+		draw_next_point(img, a, b, d);
 }

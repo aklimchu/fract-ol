@@ -20,12 +20,12 @@ int	render_jul(t_vars *vars)
 {
 	if (vars->win == NULL)
 		return (1);
-	vars->dim.left_f = (-2 + vars->shiftx) * vars->zoom;
+/* 	vars->dim.left_f = (-2 + vars->shiftx) * vars->zoom;
 	vars->dim.top_f = (-1 + vars->shifty) * vars->zoom;
 	vars->dim.right_f = (2 + vars->shiftx) * vars->zoom;
-	vars->dim.bottom_f = (1 + vars->shifty) * vars->zoom;
-	vars->scale.real = (vars->dim.right_f - vars->dim.left_f) / (SCREEN_W - 1);
-	vars->scale.imag = (vars->dim.bottom_f - vars->dim.top_f) / (SCREEN_H - 1);
+	vars->dim.bottom_f = (1 + vars->shifty) * vars->zoom; */
+	vars->dim.scale_r = (vars->dim.right_f - vars->dim.left_f) / (SCREEN_W - 1);
+	vars->dim.scale_i = (vars->dim.bottom_f - vars->dim.top_f) / (SCREEN_H - 1);
 	draw_rect(&vars->img, (t_rect){0, 0, SCREEN_W - 1, \
 		SCREEN_H - 1, 0x0069fe48});
 	fractal_jul(vars, &vars->img);
@@ -43,8 +43,8 @@ static void	fractal_jul(t_vars *vars, t_data *img)
 		{
 			vars->c.real = vars->x_jul;
 			vars->c.imag = vars->y_jul;
-			vars->z.real = vars->x * vars->scale.real + vars->dim.left_f;
-			vars->z.imag = vars->y * vars->scale.imag + vars->dim.top_f;
+			vars->z.real = vars->x * vars->dim.scale_r + vars->dim.left_f;
+			vars->z.imag = vars->y * vars->dim.scale_i + vars->dim.top_f;
 			fractal_jul_tools(img, vars);
 			vars->x++;
 		}
@@ -64,7 +64,8 @@ static void	fractal_jul_tools(t_data *img, t_vars *vars)
 	{
 		if (vars->z.real * vars->z.real + vars->z.imag * vars->z.imag >= 4)
 		{
-			my_mlx_pixel_put(img, vars->x, vars->y, choose_color(count, vars->colors.inside, vars->colors.outside));
+			my_mlx_pixel_put(img, vars->x, vars->y, \
+				choose_color(count, vars->colors.inside, vars->colors.outside));
 			flag_c = 1;
 			break ;
 		}

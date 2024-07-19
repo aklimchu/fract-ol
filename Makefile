@@ -31,7 +31,8 @@ LIBFT_LIB	= $(LIBFT_DIR)/libft.a
 SRC 		= main.c choose_color.c \
 			tools.c mandelbrot.c \
 			ft_atoi_double.c check_input.c \
-			trgb.c julia.c pythagoras.c
+			trgb.c julia.c pythagoras.c \
+			zoom.c
 OBJ 		= $(SRC:.c=.o)
 INCLUDE		= -I "./"
 
