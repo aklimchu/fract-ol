@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:48:28 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/18 15:14:03 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/22 15:06:21 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,33 @@ static void	create_window(t_vars *vars);
 
 static void	draw_fractal(t_vars *vars, char *argv[]);
 
+static void	print_info(void)
+{
+	ft_printf("Correct input for ");
+	ft_printf("mandelbrot: ./fractol mandelbrot\n");
+	ft_printf("Correct input for ");
+	ft_printf("julia: ./fractol julia x-value y-value ");
+	ft_printf("(x and y values should be between -2 and 2)\n");
+	ft_printf("Correct input for ");
+	ft_printf("pythagoras: ./fractol pythagoras\n\n");
+	ft_printf("Controls:\n");
+	ft_printf("Use mouse wheel for zooming\n");
+	ft_printf("Use arrows for moving the view\n");
+	ft_printf("Use z and x buttons for changing the colors ");
+	ft_printf("for mandelbrot and julia fractals\n");
+	ft_printf("Use q button for expanding the pythagoras tree\n");
+	ft_printf("Use r button for changing the color of the pythagoras tree\n");
+	ft_printf("Use Esc button or cross in the top right corner ");
+	ft_printf("for exiting the program\n");
+}
+
 int	main(int argc, char *argv[])
 {
 	t_vars	vars;
 
 	if (check_param(argc, argv) == 1)
 	{
-		ft_printf("Correct input for ");
-		ft_printf("mandelbrot: ./fractol mandelbrot\n");
-		ft_printf("Correct input for ");
-		ft_printf("julia: ./fractol julia x-value y-value ");
-		ft_printf("(x and y values should be between -2 and 2)\n");
-		ft_printf("Correct input for ");
-		ft_printf("pythagoras: ./fractol pythagoras\n");
+		print_info();
 		exit (EXIT_FAILURE);
 	}	
 	create_window(&vars);
@@ -55,13 +69,13 @@ static int	handle_keypress(int keysym, t_vars *vars)
 	if (keysym == XK_q && vars->addtimes < MAXTIMES)
 		vars->addtimes += 1;
 	if (keysym == XK_Left)
-		shift_fract(&vars->dim, 0.1, 0);
+		shift_fract(vars, 0.05, 0);
 	if (keysym == XK_Right)
-		shift_fract(&vars->dim, -0.1, 0);
+		shift_fract(vars, -0.05, 0);
 	if (keysym == XK_Up)
-		shift_fract(&vars->dim, 0, 0.1);
+		shift_fract(vars, 0, 0.05);
 	if (keysym == XK_Down)
-		shift_fract(&vars->dim, 0, -0.1);
+		shift_fract(vars, 0, -0.05);
 	if (keysym == XK_z)
 	{
 		vars->colors.inside = 0x00854442;
@@ -73,7 +87,12 @@ static int	handle_keypress(int keysym, t_vars *vars)
 		vars->colors.inside = 0x00EF8383;
 		vars->colors.outside = 0x00B3BD17;
 		printf("%d\n", vars->colors.inside);	// delete
-	}	
+	}
+	if (keysym == XK_r)
+	{
+		vars->startcolor = vars->startcolor + 1000;
+		vars->endcolor = vars->endcolor + 1000;
+	}
 	if (keysym == XK_Escape)
 		free_everything(vars->img.img, vars, 0);
 	return (0);
@@ -81,38 +100,15 @@ static int	handle_keypress(int keysym, t_vars *vars)
 
 static int	mouse_hook(int button, int x, int y, t_vars *vars)
 {
-	/* (void)x;
-	(void)y; */
 	if (button == 4)
 	{
-		/* printf("%d %d\n", x, y);	// delete
-		printf("%f\n", vars->dim.scale_r);	// delete
-		printf("%f\n", vars->dim.left_f);	// delete
-		printf("%f\n", vars->dim.right_f);	// delete */
-		
-	//	if (fabs(x * vars->dim.scale_r + vars->dim.left_f - vars->dim.left_f) <= fabs(vars->dim.right_f - x * vars->dim.scale_r - vars->dim.left_f))
-//			vars->shiftx = vars->shiftx - fabs(x * vars->dim.scale_r /* + vars->dim.left_f */ - vars->dim.left_f) / 20 /* * vars->zoom */ ;
-//		if (fabs(x * vars->dim.scale_r + vars->dim.left_f - vars->dim.left_f) > fabs(vars->dim.right_f - x * vars->dim.scale_r - vars->dim.left_f))
-//			vars->shiftx = vars->shiftx + fabs(x * vars->dim.scale_r /* + vars->dim.left_f */ - vars->dim.right_f) / 20  /* * vars->zoom */ ;
-//		if (fabs(y * vars->dim.scale_i + vars->dim.top_f - vars->dim.top_f) <= fabs(vars->dim.bottom_f - y * vars->dim.scale_i - vars->dim.top_f))
-//			vars->shifty = vars->shifty - fabs(y * vars->dim.scale_i /* + vars->dim.top_f */ - vars->dim.top_f) / 20  /* * vars->zoom */ ;
-//		if (fabs(y * vars->dim.scale_i + vars->dim.top_f - vars->dim.top_f) > fabs(vars->dim.bottom_f - y * vars->dim.scale_i - vars->dim.top_f))
-//			vars->shifty = vars->shifty + fabs(y * vars->dim.scale_i /* + vars->dim.top_f */ - vars->dim.bottom_f) / 20  /* * vars->zoom */ ;
-	//	vars->zoom /= 1.1;
-		mouse_zoom(&vars->dim, x, y, ZOOM);
+		mouse_zoom(&vars->dim, x, y, 1 / ZOOM);
+		mouse_zoom_pyth(vars, x, y, 1 / (ZOOM/*  - 0.195 */));
 	}
 	if (button == 5)
 	{
-//		if (fabs(x * vars->dim.scale_r + vars->dim.left_f - vars->dim.left_f) <= fabs(vars->dim.right_f - x * vars->dim.scale_r - vars->dim.left_f))
-//			vars->shiftx = vars->shiftx + fabs(x * vars->dim.scale_r /*+ vars->dim.left_f*/ - vars->dim.left_f) / 20;
-//		if (fabs(x * vars->dim.scale_r + vars->dim.left_f - vars->dim.left_f) > fabs(vars->dim.right_f - x * vars->dim.scale_r - vars->dim.left_f))
-//			vars->shiftx = vars->shiftx - fabs(x * vars->dim.scale_r /*+ vars->dim.left_f*/ - vars->dim.right_f) / 20;
-//		if (fabs(y * vars->dim.scale_i + vars->dim.top_f - vars->dim.top_f) <= fabs(vars->dim.bottom_f - y * vars->dim.scale_i - vars->dim.top_f))
-//			vars->shifty = vars->shifty + fabs(y * vars->dim.scale_i /*+ vars->dim.top_f*/ - vars->dim.top_f) / 20;
-//		if (fabs(y * vars->dim.scale_i + vars->dim.top_f - vars->dim.top_f) > fabs(vars->dim.bottom_f - y * vars->dim.scale_i - vars->dim.top_f))
-//			vars->shifty = vars->shifty - fabs(y * vars->dim.scale_i /*+ vars->dim.left_f*/ - vars->dim.bottom_f) / 20;
-	//	vars->zoom *= 1.1;
-		mouse_zoom(&vars->dim, x, y, 1 / ZOOM);
+		mouse_zoom(&vars->dim, x, y, ZOOM);
+		mouse_zoom_pyth(vars, x, y, (ZOOM/*  - 0.195 */));
 	}
 	return (0);
 }
@@ -156,6 +152,12 @@ static void	draw_fractal(t_vars *vars, char *argv[])
 		ft_strncmp(argv[1], "p", ft_strlen(argv[1])) == 0)
 	{
 		vars->addtimes = 0;
+		vars->a.x = 700;
+		vars->a.y = 1200;
+		vars->b.x = 800;
+		vars->b.y = 1300;
+		vars->startcolor = 0x00562952;
+		vars->endcolor = 0x00F8FA70;
 		mlx_loop_hook(vars->mlx, &render_pyth, vars);
 	}
 	mlx_mouse_hook(vars->win, mouse_hook, vars);

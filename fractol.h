@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:31:32 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/18 15:13:09 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/22 14:54:36 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 # define MAXCOUNT 30
 # define MAXTIMES 10
-# define SCREEN_W 800 // 1080
-# define SCREEN_H 800 // 1080
-# define ZOOM 1.1
+# define SCREEN_W 2000 // 1080
+# define SCREEN_H 2000 // 1080
+# define ZOOM 1.2
 
 typedef struct s_complex
 {
@@ -46,8 +46,8 @@ typedef struct s_dim
 	double	left_f;
 	double	bottom_f;
 	double	top_f;
-	double	center_r;	// delete?
-	double	center_i;	// delete?
+	double	center_r;
+	double	center_i;
 }				t_dim;
 
 typedef struct s_data
@@ -78,6 +78,8 @@ typedef struct s_vars
 	t_complex	scale;
 	t_complex	z;
 	t_colors	colors;
+	int			startcolor;
+	int			endcolor;
 	int			x;
 	int			y;
 	int			times;
@@ -112,6 +114,7 @@ void	free_everything(t_data *img, t_vars *vars, int exit_code);
 int		render_pyth(t_vars *vars);
 int		gradient(int startcolor, int endcolor, int len, int pos);
 void	mouse_zoom(t_dim *dim, int x, int y, double zoom);
-void	shift_fract(t_dim *dim, double shiftx, double shifty);
+void	shift_fract(t_vars *vars, double shiftx, double shifty);
+void	mouse_zoom_pyth(t_vars *vars, int x, int y, double zoom);
 
 #endif /* FRACT_OL_H */
