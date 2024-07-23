@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:48:28 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/23 09:24:00 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/23 12:16:36 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	main(int argc, char *argv[])
 	vars.dim.right_f = 2;
 	vars.dim.top_f = -2;
 	vars.dim.bottom_f = 2;
+	vars.max_count = 50;
 	initialize_values(&vars);
 	draw_fractal(&vars, argv);
 	mlx_hook(vars.win, DestroyNotify, StructureNotifyMask, \
@@ -92,7 +93,6 @@ static void	initialize_values(t_vars *vars)
 	vars->a.y = 0;
 	vars->b.x = 0;
 	vars->b.y = 0;
-
 }
 
 static void	draw_fractal(t_vars *vars, char *argv[])

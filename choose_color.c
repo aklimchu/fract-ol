@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:48:49 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/18 10:42:14 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/23 12:20:26 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,25 @@ static int	add_shade(double distance, int color);
 
 static int	ft_round(double num);
 
-int	choose_color(int count, int color_inside, int color_outside)
+int	choose_color(t_vars *vars, int count, int color_in, int color_out)
 {
 	int		i;
 
-	if (count >= 0 && count < MAXCOUNT / 20)
-		return (add_shade(0, color_outside));
+	if (count >= 0 && count < vars->max_count / 20)
+		return (add_shade(0, color_out));
 	i = 1;
 	while (i < 9)
 	{
-		if (count >= MAXCOUNT / 20 * i && count < MAXCOUNT / 20 * (i + 1))
-			return (add_shade(0.05 * i, color_outside));
+		if (count >= vars->max_count / 20 * i && \
+			count < vars->max_count / 20 * (i + 1))
+			return (add_shade(0.05 * i, color_out));
 		i++;
 	}
 	while (i < 21)
 	{
-		if (count >= MAXCOUNT / 20 * i && count < MAXCOUNT / 20 * (i + 1))
-			return (add_shade(0.05 * i, color_inside));
+		if (count >= vars->max_count / 20 * i && \
+			count < vars->max_count / 20 * (i + 1))
+			return (add_shade(0.05 * i, color_in));
 		i++;
 	}
 	return (0);

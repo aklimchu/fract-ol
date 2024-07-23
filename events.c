@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:12:45 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/23 09:16:57 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/23 12:07:58 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,14 @@ int	mouse_hook(int button, int x, int y, t_vars *vars)
 {
 	if (button == 4)
 	{
+		vars->max_count++;
 		mouse_zoom(&vars->dim, x, y, 1 / ZOOM);
 		mouse_zoom_pyth(vars, x, y, 1 / ZOOM);
 	}
 	if (button == 5)
 	{
+		if (vars->max_count > 0)
+			vars->max_count--;
 		mouse_zoom(&vars->dim, x, y, ZOOM);
 		mouse_zoom_pyth(vars, x, y, ZOOM);
 	}
