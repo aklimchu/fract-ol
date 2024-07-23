@@ -6,18 +6,16 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:31:32 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/22 14:54:36 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/23 08:39:22 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "./mlx_linux/mlx.h"
-# include "./mlx_linux/mlx_int.h"
+# include "./mlx_linux/mlx.h"	//	do we need both?
+# include "./mlx_linux/mlx_int.h"	//	do we need both?
 # include <math.h>
-# include <stdlib.h>
-# include <stdio.h>	//delete
 # include "./libft/libft.h"
 
 # define MAXCOUNT 30
@@ -116,5 +114,7 @@ int		gradient(int startcolor, int endcolor, int len, int pos);
 void	mouse_zoom(t_dim *dim, int x, int y, double zoom);
 void	shift_fract(t_vars *vars, double shiftx, double shifty);
 void	mouse_zoom_pyth(t_vars *vars, int x, int y, double zoom);
+int		handle_keypress(int keysym, t_vars *vars);
+int		mouse_hook(int button, int x, int y, t_vars *vars);
 
 #endif /* FRACT_OL_H */

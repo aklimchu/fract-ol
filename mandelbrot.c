@@ -6,13 +6,11 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:48:24 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/18 10:50:10 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/23 08:18:34 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-static void	fractal_man(t_data *img, t_vars *vars);
 
 static void	fractal_man_tools(t_data *img, t_vars *vars);
 
@@ -20,21 +18,10 @@ int	render_man(t_vars *vars)
 {
 	if (vars->win == NULL)
 		return (1);
-/* 	vars->dim.left_f = (-2 + vars->shiftx) * vars->zoom;
-	vars->dim.top_f = (-1 + vars->shifty) * vars->zoom;
-	vars->dim.right_f = (2 + vars->shiftx) * vars->zoom;
-	vars->dim.bottom_f = (1 + vars->shifty) * vars->zoom; */
 	vars->dim.scale_r = (vars->dim.right_f - vars->dim.left_f) / (SCREEN_W - 1);
 	vars->dim.scale_i = (vars->dim.bottom_f - vars->dim.top_f) / (SCREEN_H - 1);
 	draw_rect(&vars->img, (t_rect){0, 0, SCREEN_W - 1, \
 		SCREEN_H - 1, 0x0069fe48});
-	fractal_man(&vars->img, vars);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
-	return (0);
-}
-
-static void	fractal_man(t_data *img, t_vars *vars)
-{
 	vars->y = 1;
 	while (vars->y <= SCREEN_H - 2)
 	{
@@ -45,11 +32,13 @@ static void	fractal_man(t_data *img, t_vars *vars)
 			vars->c.imag = vars->y * vars->dim.scale_i + vars->dim.top_f;
 			vars->z.real = 0;
 			vars->z.imag = 0;
-			fractal_man_tools(img, vars);
+			fractal_man_tools(&vars->img, vars);
 			vars->x++;
 		}
 		vars->y++;
 	}
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
+	return (0);
 }
 
 static void	fractal_man_tools(t_data *img, t_vars *vars)

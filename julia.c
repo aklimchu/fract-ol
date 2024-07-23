@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:22:43 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/18 10:49:52 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/23 08:12:08 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,14 @@
 
 static void	fractal_jul_tools(t_data *img, t_vars *vars);
 
-static void	fractal_jul(t_vars *vars, t_data *img);
-
 int	render_jul(t_vars *vars)
 {
 	if (vars->win == NULL)
 		return (1);
-/* 	vars->dim.left_f = (-2 + vars->shiftx) * vars->zoom;
-	vars->dim.top_f = (-1 + vars->shifty) * vars->zoom;
-	vars->dim.right_f = (2 + vars->shiftx) * vars->zoom;
-	vars->dim.bottom_f = (1 + vars->shifty) * vars->zoom; */
 	vars->dim.scale_r = (vars->dim.right_f - vars->dim.left_f) / (SCREEN_W - 1);
 	vars->dim.scale_i = (vars->dim.bottom_f - vars->dim.top_f) / (SCREEN_H - 1);
 	draw_rect(&vars->img, (t_rect){0, 0, SCREEN_W - 1, \
 		SCREEN_H - 1, 0x0069fe48});
-	fractal_jul(vars, &vars->img);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
-	return (0);
-}
-
-static void	fractal_jul(t_vars *vars, t_data *img)
-{
 	vars->y = 1;
 	while (vars->y <= SCREEN_H - 2)
 	{
@@ -45,11 +32,13 @@ static void	fractal_jul(t_vars *vars, t_data *img)
 			vars->c.imag = vars->y_jul;
 			vars->z.real = vars->x * vars->dim.scale_r + vars->dim.left_f;
 			vars->z.imag = vars->y * vars->dim.scale_i + vars->dim.top_f;
-			fractal_jul_tools(img, vars);
+			fractal_jul_tools(&vars->img, vars);
 			vars->x++;
 		}
 		vars->y++;
 	}
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
+	return (0);
 }
 
 static void	fractal_jul_tools(t_data *img, t_vars *vars)

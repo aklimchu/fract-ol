@@ -6,19 +6,44 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:48:28 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/22 15:06:21 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/23 09:24:00 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int	handle_keypress(int keysym, t_vars *vars);
-
-static int	mouse_hook(int button, int x, int y, t_vars *vars);
+static void	print_info(void);
 
 static void	create_window(t_vars *vars);
 
+static void	initialize_values(t_vars *vars);
+
 static void	draw_fractal(t_vars *vars, char *argv[]);
+
+int	main(int argc, char *argv[])
+{
+	t_vars	vars;
+
+	if (check_param(argc, argv) == 1)
+	{
+		print_info();
+		exit (EXIT_FAILURE);
+	}	
+	create_window(&vars);
+	vars.colors.inside = 0x00854442;
+	vars.colors.outside = 0x00ff6d2b;
+	vars.dim.left_f = -2;
+	vars.dim.right_f = 2;
+	vars.dim.top_f = -2;
+	vars.dim.bottom_f = 2;
+	initialize_values(&vars);
+	draw_fractal(&vars, argv);
+	mlx_hook(vars.win, DestroyNotify, StructureNotifyMask, \
+		&handle_destroy, &vars);
+	mlx_hook(vars.win, KeyPress, KeyPressMask, &handle_keypress, &vars);
+	mlx_loop(vars.mlx);
+	exit(EXIT_SUCCESS);
+}
 
 static void	print_info(void)
 {
@@ -40,79 +65,6 @@ static void	print_info(void)
 	ft_printf("for exiting the program\n");
 }
 
-int	main(int argc, char *argv[])
-{
-	t_vars	vars;
-
-	if (check_param(argc, argv) == 1)
-	{
-		print_info();
-		exit (EXIT_FAILURE);
-	}	
-	create_window(&vars);
-	vars.colors.inside = 0x00854442;
-	vars.colors.outside = 0x00ff6d2b;
-	vars.dim.left_f = -2;
-	vars.dim.right_f = 2;
-	vars.dim.top_f = -2;
-	vars.dim.bottom_f = 2;
-	draw_fractal(&vars, argv);
-	mlx_hook(vars.win, DestroyNotify, StructureNotifyMask, \
-		&handle_destroy, &vars);
-	mlx_hook(vars.win, KeyPress, KeyPressMask, &handle_keypress, &vars);
-	mlx_loop(vars.mlx);
-	exit(EXIT_SUCCESS);
-}
-
-static int	handle_keypress(int keysym, t_vars *vars)
-{
-	if (keysym == XK_q && vars->addtimes < MAXTIMES)
-		vars->addtimes += 1;
-	if (keysym == XK_Left)
-		shift_fract(vars, 0.05, 0);
-	if (keysym == XK_Right)
-		shift_fract(vars, -0.05, 0);
-	if (keysym == XK_Up)
-		shift_fract(vars, 0, 0.05);
-	if (keysym == XK_Down)
-		shift_fract(vars, 0, -0.05);
-	if (keysym == XK_z)
-	{
-		vars->colors.inside = 0x00854442;
-		vars->colors.outside = 0x00ff6d2b;
-		printf("%d\n", vars->colors.inside);	// delete
-	}
-	if (keysym == XK_x)
-	{
-		vars->colors.inside = 0x00EF8383;
-		vars->colors.outside = 0x00B3BD17;
-		printf("%d\n", vars->colors.inside);	// delete
-	}
-	if (keysym == XK_r)
-	{
-		vars->startcolor = vars->startcolor + 1000;
-		vars->endcolor = vars->endcolor + 1000;
-	}
-	if (keysym == XK_Escape)
-		free_everything(vars->img.img, vars, 0);
-	return (0);
-}
-
-static int	mouse_hook(int button, int x, int y, t_vars *vars)
-{
-	if (button == 4)
-	{
-		mouse_zoom(&vars->dim, x, y, 1 / ZOOM);
-		mouse_zoom_pyth(vars, x, y, 1 / (ZOOM/*  - 0.195 */));
-	}
-	if (button == 5)
-	{
-		mouse_zoom(&vars->dim, x, y, ZOOM);
-		mouse_zoom_pyth(vars, x, y, (ZOOM/*  - 0.195 */));
-	}
-	return (0);
-}
-
 static void	create_window(t_vars *vars)
 {
 	vars->mlx = mlx_init();
@@ -132,6 +84,15 @@ static void	create_window(t_vars *vars)
 		&vars->img.bits_per_pixel, &vars->img.line_length, &vars->img.endian);
 	if (vars->img.addr == NULL)
 		free_everything(vars->img.img, vars, 1);
+}
+
+static void	initialize_values(t_vars *vars)
+{
+	vars->a.x = 0;
+	vars->a.y = 0;
+	vars->b.x = 0;
+	vars->b.y = 0;
+
 }
 
 static void	draw_fractal(t_vars *vars, char *argv[])

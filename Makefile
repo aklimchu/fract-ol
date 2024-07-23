@@ -6,7 +6,7 @@
 #    By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/24 11:18:05 by aklimchu          #+#    #+#              #
-#    Updated: 2024/07/22 10:53:31 by aklimchu         ###   ########.fr        #
+#    Updated: 2024/07/23 08:17:04 by aklimchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ SRC 		= main.c choose_color.c \
 			tools.c mandelbrot.c \
 			ft_atoi_double.c check_input.c \
 			trgb.c julia.c pythagoras.c \
-			zoom_shift.c zoom_pyth.c
+			zoom_shift.c zoom_pyth.c \
+			events.c
 OBJ 		= $(SRC:.c=.o)
 INCLUDE		= -I "./"
 
