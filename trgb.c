@@ -6,9 +6,11 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:06:17 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/16 11:42:16 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/23 13:10:33 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "fractol.h"
 
 int	get_t(int trgb)
 {
