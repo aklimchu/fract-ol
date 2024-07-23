@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:17:30 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/22 14:52:39 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/23 13:23:24 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_param(int argc, char *argv[])
 {
 	if (argc == 1 || argc > 4)
 		return (1);
-	if ((ft_strncmp(argv[1], "mandelbrod", ft_strlen(argv[1])) == 0 || \
+	if ((ft_strncmp(argv[1], "mandelbrot", ft_strlen(argv[1])) == 0 || \
 		ft_strncmp(argv[1], "m", ft_strlen(argv[1])) == 0) && argc == 2)
 		return (0);
 	if ((ft_strncmp(argv[1], "pythagoras", ft_strlen(argv[1])) == 0 || \
