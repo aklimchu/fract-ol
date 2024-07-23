@@ -6,21 +6,21 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:31:32 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/23 12:18:52 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/23 12:33:01 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "./mlx_linux/mlx.h"	//	do we need both?
-# include "./mlx_linux/mlx_int.h"	//	do we need both?
+# include "./mlx_linux/mlx.h"
+# include "./mlx_linux/mlx_int.h"
 # include <math.h>
 # include "./libft/libft.h"
 
 # define MAXTIMES 10
-# define SCREEN_W 2000 // 1080
-# define SCREEN_H 2000 // 1080
+# define SCREEN_W 2000
+# define SCREEN_H 2000
 # define ZOOM 1.2
 
 typedef struct s_complex
