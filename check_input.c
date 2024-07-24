@@ -6,11 +6,39 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:17:30 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/23 13:23:24 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:44:04 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static int	check_double(char *str);
+
+//The function checks if the user input is correct and complete
+
+int	check_param(int argc, char *argv[])
+{
+	if (argc == 1 || argc > 4)
+		return (1);
+	if ((ft_strncmp(argv[1], "mandelbrot", ft_strlen(argv[1])) == 0 || \
+		ft_strncmp(argv[1], "m", ft_strlen(argv[1])) == 0) && argc == 2)
+		return (0);
+	if ((ft_strncmp(argv[1], "pythagoras", ft_strlen(argv[1])) == 0 || \
+		ft_strncmp(argv[1], "p", ft_strlen(argv[1])) == 0) && argc == 2)
+		return (0);
+	if ((ft_strncmp(argv[1], "julia", ft_strlen(argv[1])) == 0 || \
+		ft_strncmp(argv[1], "j", ft_strlen(argv[1])) == 0) && argc == 4)
+	{
+		if (check_double(argv[2]) == 0 && check_double(argv[3]) == 0 \
+			&& ft_atoi_double(argv[2]) >= -2 && ft_atoi_double(argv[2]) <= 2 \
+			&& ft_atoi_double(argv[3]) >= -2 && ft_atoi_double(argv[3]) <= 2)
+			return (0);
+	}
+	return (1);
+}
+
+//The function is checking if the argument provided can be converted to
+//double-precision floating-point data type
 
 static int	check_double(char *str)
 {
@@ -33,25 +61,4 @@ static int	check_double(char *str)
 		str++;
 	}
 	return (0);
-}
-
-int	check_param(int argc, char *argv[])
-{
-	if (argc == 1 || argc > 4)
-		return (1);
-	if ((ft_strncmp(argv[1], "mandelbrot", ft_strlen(argv[1])) == 0 || \
-		ft_strncmp(argv[1], "m", ft_strlen(argv[1])) == 0) && argc == 2)
-		return (0);
-	if ((ft_strncmp(argv[1], "pythagoras", ft_strlen(argv[1])) == 0 || \
-		ft_strncmp(argv[1], "p", ft_strlen(argv[1])) == 0) && argc == 2)
-		return (0);
-	if ((ft_strncmp(argv[1], "julia", ft_strlen(argv[1])) == 0 || \
-		ft_strncmp(argv[1], "j", ft_strlen(argv[1])) == 0) && argc == 4)
-	{
-		if (check_double(argv[2]) == 0 && check_double(argv[3]) == 0 \
-			&& ft_atoi_double(argv[2]) >= -2 && ft_atoi_double(argv[2]) <= 2 \
-			&& ft_atoi_double(argv[3]) >= -2 && ft_atoi_double(argv[3]) <= 2)
-			return (0);
-	}
-	return (1);
 }

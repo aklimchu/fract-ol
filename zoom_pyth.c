@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 10:52:19 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/23 09:06:20 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/24 15:03:47 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 static int	zoom_tools(t_vars *vars, int x, int y, double zoom);
 
 static int	zoom_tools_2(t_vars *vars, int x, int y, double zoom);
+
+//The function calculates zooming to mouse cursor for pythagoras fractal
 
 void	mouse_zoom_pyth(t_vars *vars, int x, int y, double zoom)
 {

@@ -6,13 +6,15 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:12:45 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/23 12:07:58 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:48:31 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 static void	handle_keypress_tools(int keysym, t_vars *vars);
+
+//The function calls actios based on the key pressed
 
 int	handle_keypress(int keysym, t_vars *vars)
 {
@@ -34,6 +36,9 @@ int	handle_keypress(int keysym, t_vars *vars)
 	handle_keypress_tools(keysym, vars);
 	return (0);
 }
+
+//The function calls actios based on the button pressed
+//x and y values determine mouse cursor position
 
 int	mouse_hook(int button, int x, int y, t_vars *vars)
 {

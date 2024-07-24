@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:48:49 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/23 12:20:26 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:47:01 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ static int	create_trgb(int t, int r, int g, int b);
 static int	add_shade(double distance, int color);
 
 static int	ft_round(double num);
+
+//The function calcilates the extent of shading based on the
+///number of iterations we made to draw a point
 
 int	choose_color(t_vars *vars, int count, int color_in, int color_out)
 {
@@ -42,6 +45,8 @@ int	choose_color(t_vars *vars, int count, int color_in, int color_out)
 	return (0);
 }
 
+//The function creates gradients for given colors
+
 int	gradient(int startcolor, int endcolor, int len, int pos)
 {
 	float	increment[3];
@@ -61,10 +66,14 @@ int	gradient(int startcolor, int endcolor, int len, int pos)
 	return (newcolor);
 }
 
+//The program creates hexadecimal representation of color
+
 static int	create_trgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
 }
+
+//The function is adding shade to given color
 
 static int	add_shade(double distance, int color)
 {

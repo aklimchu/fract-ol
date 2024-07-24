@@ -6,13 +6,15 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:22:43 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/23 12:12:30 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:50:13 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 static void	fractal_jul_tools(t_data *img, t_vars *vars);
+
+//The function renders julia fractal based on given dimensions
 
 int	render_jul(t_vars *vars)
 {

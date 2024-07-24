@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:48:28 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/23 12:16:36 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:40:31 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ int	main(int argc, char *argv[])
 	exit(EXIT_SUCCESS);
 }
 
+//The function prints information about correct input format and about controls
+//It is printed on screen in case the user provided incorrent / incomplete input
+
 static void	print_info(void)
 {
 	ft_printf("Correct input for ");
@@ -65,6 +68,8 @@ static void	print_info(void)
 	ft_printf("Use Esc button or cross in the top right corner ");
 	ft_printf("for exiting the program\n");
 }
+
+//The function initializes mlx, and then creates a new window and new image
 
 static void	create_window(t_vars *vars)
 {
@@ -94,6 +99,8 @@ static void	initialize_values(t_vars *vars)
 	vars->b.x = 0;
 	vars->b.y = 0;
 }
+
+//Based on the user input - a function is called to render one of the fractals
 
 static void	draw_fractal(t_vars *vars, char *argv[])
 {

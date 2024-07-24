@@ -6,13 +6,15 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:48:24 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/23 12:12:01 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:53:41 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 static void	fractal_man_tools(t_data *img, t_vars *vars);
+
+//The function renders mandelbrot fractal based on given dimensions
 
 int	render_man(t_vars *vars)
 {

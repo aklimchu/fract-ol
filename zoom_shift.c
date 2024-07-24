@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 08:29:55 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/23 09:05:58 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/24 15:04:57 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 static void	mouse_zoom_tools(t_dim *dim, double add_real, \
 	double add_imag, double zoom);
+
+//The function calculates zooming to mouse cursor for mandelbrot
+//and julia fractals
 
 void	mouse_zoom(t_dim *dim, int x, int y, double zoom)
 {
@@ -40,6 +43,8 @@ void	mouse_zoom(t_dim *dim, int x, int y, double zoom)
 	}
 	mouse_zoom_tools(dim, add_real, add_imag, zoom);
 }
+
+//The function calculates new dimensions after shifting the fractal
 
 void	shift_fract(t_vars *vars, double shiftx, double shifty)
 {

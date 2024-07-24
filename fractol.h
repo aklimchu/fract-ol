@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:31:32 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/23 12:33:01 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/24 15:00:29 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ typedef struct s_rect
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		handle_destroy(t_vars *vars);
-int		render_rect(t_data *img, t_rect rect);
 int		draw_rect(t_data *img, t_rect rect);
 int		choose_color(t_vars *vars, int count, int color_in, int color_out);
 int		render_man(t_vars *vars);

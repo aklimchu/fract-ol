@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 11:26:03 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/23 08:33:05 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:56:37 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	check_borders(t_vars *vars, t_pyth c, t_pyth d, t_pyth e);
 static void	draw_line(t_data *img, t_pyth a, t_pyth b);
 
 static void	draw_next_point(t_data *img, t_pyth a, t_pyth b, t_pyth d);
+
+//The function renders pythagoras fractal based on given dimensions
 
 int	render_pyth(t_vars *vars)
 {
@@ -66,6 +68,8 @@ static void	fractal_pyth(t_vars *vars, t_pyth a, t_pyth b, int times)
 	}
 }
 
+//The function checks if given dimensions don't exceed the screen boundaries
+
 static int	check_borders(t_vars *vars, t_pyth c, t_pyth d, t_pyth e)
 {
 	if (vars->a.x >= 0 && vars->a.y >= 0 && vars->b.x >= 0 && \
@@ -77,6 +81,8 @@ static int	check_borders(t_vars *vars, t_pyth c, t_pyth d, t_pyth e)
 		return (0);
 	return (1);
 }
+
+//The function draws the line based on given dimensions
 
 static void	draw_line(t_data *img, t_pyth a, t_pyth b)
 {
@@ -101,6 +107,8 @@ static void	draw_line(t_data *img, t_pyth a, t_pyth b)
 		--pixels;
 	}
 }
+
+//The function fills in the square based on given dimensions
 
 static void	draw_next_point(t_data *img, t_pyth a, t_pyth b, t_pyth d)
 {

@@ -6,11 +6,13 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:48:36 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/17 10:38:57 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/07/24 15:01:11 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+//The function puts pixel to thhe image provided
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -20,27 +22,15 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+//The function calls the action to free the memory
+
 int	handle_destroy(t_vars *vars)
 {
 	free_everything(vars->img.img, vars, 0);
 	return (0);
 }
 
-int	render_rect(t_data *img, t_rect rect)
-{
-	int		i;
-	int		j;
-
-	i = rect.y;
-	while (i < rect.y + rect.height)
-	{
-		j = rect.x;
-		while (j < rect.x + rect.width)
-			my_mlx_pixel_put(img, j++, i, rect.color);
-		++i;
-	}
-	return (0);
-}
+//The function draws a rectangle
 
 int	draw_rect(t_data *img, t_rect rect)
 {
@@ -59,6 +49,8 @@ int	draw_rect(t_data *img, t_rect rect)
 		my_mlx_pixel_put(img, x, y--, rect.color);
 	return (0);
 }
+
+//The function frees the memory based on arguments provided
 
 void	free_everything(t_data *img, t_vars *vars, int exit_code)
 {
