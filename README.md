@@ -21,17 +21,17 @@ make
 ## 🎮 Running the Program
 To draw the fractals, use the following commands:
 
-### *Mandelbrot:
+### * Mandelbrot:
 ```bash
 ./fractol mandelbrot
 ```
-### *Julia:
+### * Julia:
 ```bash
 ./fractol julia x-value y-value
 ```
 *(x and y values should be between -2 and 2)*
 
-### *Pythagoras Tree:
+### * Pythagoras Tree:
 ```bash
 ./fractol pythagoras
 ```
