@@ -37,12 +37,12 @@ make
 
 🎮 Controls
 
-* #### Mouse Wheel: ##### Zoom in/out
-* #### Arrow Keys: ##### Move the view
-* #### Z / X: ##### Change colors for Mandelbrot and Julia fractals
-* #### Q: ##### Expand the Pythagoras tree
-* #### R: ##### Change the Pythagoras tree color
-* #### Esc: ##### Exit the program
+* <big> Mouse Wheel: <small> Zoom in/out
+* <big> Arrow Keys: <small> Move the view
+* <big> Z / X: <small> Change colors for Mandelbrot and Julia fractals
+* <big> Q: <small> Expand the Pythagoras tree
+* <big> R: <small> Change the Pythagoras tree color
+* <big> Esc: <small> Exit the program
 
 ## 🧹 Cleaning Up
 
