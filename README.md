@@ -35,7 +35,7 @@ make
 ./fractol pythagoras
 ```
 
-🎮 Controls
+## ✨ Controls
 
 * Mouse Wheel: Zoom in/out
 * Arrow Keys: Move the view
