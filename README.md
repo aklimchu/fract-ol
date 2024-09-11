@@ -15,10 +15,10 @@ cd fractol
 ## Running the tests
 
 <!-- start:code block -->
-#### Create the program with Makefile
+### Create the program with Makefile
 make
 
-#### Run the program to start drawing the fractals
+### Run the program to start drawing the fractals
 Correct input for mandelbrot: ./fractol mandelbrot
 Correct input for julia: ./fractol julia x-value y-value (x and y values should be between -2 and 2)
 Correct input for pythagoras: ./fractol pythagoras
@@ -31,7 +31,7 @@ Use q button for expanding the pythagoras tree
 Use r button for changing the color of the pythagoras tree
 Use Esc button or cross in the top right corner for exiting the program
 
-#### Clean the object files and library file
+### Clean the object files and library file
 make fclean
 <!-- end:code block -->
 
