@@ -14,7 +14,7 @@ cd fractol
 
 ## 🛠️ Build the Program
 
-### Use make to create the program:
+### Use 'make' command to create the program:
 
 make
 
