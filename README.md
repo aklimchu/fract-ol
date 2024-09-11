@@ -21,7 +21,7 @@ make
 ## 🎮 Running the Program
 To draw the fractals, use the following commands:
 
-### * Mandelbrot:
+* ### Mandelbrot:
 ```bash
 ./fractol mandelbrot
 ```
