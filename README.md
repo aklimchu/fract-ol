@@ -6,7 +6,7 @@ Pythagoras tree fractals using 2D programming
 
 <!-- start:code block -->
 #### Clone this repository
-git clone https://github.com/aklimchu/Fract-ol.git
+git clone https://github.com/aklimchu/fractol.git
 
 cd fractol
 
@@ -15,11 +15,21 @@ cd fractol
 ## Running the tests
 
 <!-- start:code block -->
-#### Create the library with Makefile
+#### Create the program with Makefile
 make
 
-#### Test the library with your my "main" or create your own
-cc libftprintf.a main.c
+#### Run the program to start drawing the fractals
+Correct input for mandelbrot: ./fractol mandelbrot
+Correct input for julia: ./fractol julia x-value y-value (x and y values should be between -2 and 2)
+Correct input for pythagoras: ./fractol pythagoras
+
+Controls:
+Use mouse wheel for zooming
+Use arrows for moving the view
+Use z and x buttons for changing the colors for mandelbrot and julia fractals
+Use q button for expanding the pythagoras tree
+Use r button for changing the color of the pythagoras tree
+Use Esc button or cross in the top right corner for exiting the program
 
 #### Clean the object files and library file
 make fclean
