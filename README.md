@@ -37,7 +37,7 @@ make
 
 🎮 Controls
 
-* <big> Mouse Wheel: <small> Zoom in/out
+* <big> Mouse Wheel:</big> <small> Zoom in/out </small>
 * <big> Arrow Keys: <small> Move the view
 * <big> Z / X: <small> Change colors for Mandelbrot and Julia fractals
 * <big> Q: <small> Expand the Pythagoras tree
