@@ -20,15 +20,22 @@ make
 
 ### Run the program to start drawing the fractals
 Correct input for mandelbrot: ./fractol mandelbrot
+
 Correct input for julia: ./fractol julia x-value y-value (x and y values should be between -2 and 2)
+
 Correct input for pythagoras: ./fractol pythagoras
 
 Controls:
 Use mouse wheel for zooming
+
 Use arrows for moving the view
+
 Use z and x buttons for changing the colors for mandelbrot and julia fractals
+
 Use q button for expanding the pythagoras tree
+
 Use r button for changing the color of the pythagoras tree
+
 Use Esc button or cross in the top right corner for exiting the program
 
 ### Clean the object files and library file
