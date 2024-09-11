@@ -8,10 +8,10 @@ Explore Mandelbrot, Julia and Pythagoras tree fractals using 2D programming!
 ## 🚀 Installation
 
 Clone the repository and navigate to the project directory:
-
+```bash
 git clone https://github.com/aklimchu/fractol.git
 cd fractol
-
+```
 ## 🛠️ Build the Program
 
 ### Use `make` command to create the program:
