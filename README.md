@@ -29,7 +29,7 @@ Julia:
 ```bash
 ./fractol julia x-value y-value
 ```
-(x and y values should be between -2 and 2)
+*(x and y values should be between -2 and 2)*
 
 Pythagoras Tree:
 
