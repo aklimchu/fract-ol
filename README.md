@@ -14,10 +14,10 @@ cd fractol
 
 ## 🛠️ Build the Program
 
-### Use 'make' command to create the program:
-
+### Use `make` command to create the program:
+```bash
 make
-
+```
 ### ✨ Run the Program
 To draw the fractals, use the following commands:
 
@@ -26,14 +26,16 @@ Mandelbrot:
 ./fractol mandelbrot
 
 Julia:
-
-./fractol julia x-value y-value 
+```bash
+./fractol julia x-value y-value
+```
 (x and y values should be between -2 and 2)
 
 Pythagoras Tree:
 
 ```bash
 ./fractol pythagoras
+```
 
 🎮 Controls
 
@@ -51,9 +53,9 @@ Esc: Exit the program
 ### 🧹 Cleaning Up
 
 To remove object files and libraries:
-
+```bash
 make fclean
-
+```
 ## License
 
 This project is licensed under the GNU GENERAL PUBLIC LICENSE - see the LICENSE.md file for details
