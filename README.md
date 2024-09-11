@@ -25,7 +25,9 @@ Correct input for julia: ./fractol julia x-value y-value (x and y values should 
 
 Correct input for pythagoras: ./fractol pythagoras
 
+
 Controls:
+
 Use mouse wheel for zooming
 
 Use arrows for moving the view
