@@ -1,6 +1,6 @@
 # fractol: Fractal Visualization in 2D
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://opensource.org/licenses/GPL-3.0)
-[![Build Status](https://travis-ci.org/username/fractol.svg?branch=main)](https://travis-ci.org/username/fractol)
+[![Build Status](https://travis-ci.org/aklimchu/fractol.svg?branch=main)](https://travis-ci.org/username/fractol)
 The goal of the project was to draw Mandelbrot, Julia and 
 Pythagoras tree fractals using 2D programming
 
