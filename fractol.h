@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:31:32 by aklimchu          #+#    #+#             */
-/*   Updated: 2024/07/24 15:00:29 by aklimchu         ###   ########.fr       */
+/*   Updated: 2024/09/11 10:55:42 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include "./libft/libft.h"
 
 # define MAXTIMES 10
-# define SCREEN_W 2000
-# define SCREEN_H 2000
+# define SCREEN_W 1500
+# define SCREEN_H 1500
 # define ZOOM 1.2
 
 typedef struct s_complex
