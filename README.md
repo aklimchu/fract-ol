@@ -3,9 +3,9 @@
 Explore Mandelbrot, Julia and Pythagoras tree fractals using 2D programming!
 
 ## Preview
-![Fractol Preview](https://github.com/user-attachments/assets/0af5316c-99f1-4b14-b857-c57703aa4831)
+![Fractol Preview](https://github.com/user-attachments/assets/3a9e852e-a9cf-4558-87b8-51f0909077e1)
 
-## 🚀 Installation
+## 🚀 Installation!
 
 Clone the repository and navigate to the project directory:
 ```bash
