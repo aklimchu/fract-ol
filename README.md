@@ -18,7 +18,7 @@ cd fractol
 ```bash
 make
 ```
-### ✨ Run the Program
+## 🎮 Running the Program
 To draw the fractals, use the following commands:
 
 Mandelbrot:
