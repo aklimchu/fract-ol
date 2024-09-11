@@ -1,50 +1,58 @@
 # fractol: Fractal Visualization in 2D
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://opensource.org/licenses/GPL-3.0)
-[![Build Status](https://travis-ci.org/aklimchu/fractol.svg?branch=main)](https://travis-ci.org/aklimchu/fractol)
-The goal of the project was to draw Mandelbrot, Julia and 
-Pythagoras tree fractals using 2D programming
+Explore Mandelbrot, Julia and Pythagoras tree fractals using 2D programming!
 
-## Installation
+## Preview
+![Fractol Preview](link-to-screenshot.png)
 
-<!-- start:code block -->
-#### Clone this repository
+## 🚀 Installation
+
+Clone the repository and navigate to the project directory:
+
 git clone https://github.com/aklimchu/fractol.git
-
 cd fractol
 
-<!-- end:code block -->
+## 🛠️ Build the Program
 
-## Running the tests
+### Use make to create the program:
 
-<!-- start:code block -->
-### Create the program with Makefile
 make
 
-### Run the program to start drawing the fractals
-Correct input for mandelbrot: ./fractol mandelbrot
+### ✨ Run the Program
+To draw the fractals, use the following commands:
 
-Correct input for julia: ./fractol julia x-value y-value (x and y values should be between -2 and 2)
+Mandelbrot:
 
-Correct input for pythagoras: ./fractol pythagoras
+./fractol mandelbrot
 
+Julia:
 
-Controls:
+./fractol julia x-value y-value 
+(x and y values should be between -2 and 2)
 
-Use mouse wheel for zooming
+Pythagoras Tree:
 
-Use arrows for moving the view
+./fractol pythagoras
 
-Use z and x buttons for changing the colors for mandelbrot and julia fractals
+🎮 Controls
 
-Use q button for expanding the pythagoras tree
+Mouse Wheel: Zoom in/out
+Arrow Keys: Move the view
 
-Use r button for changing the color of the pythagoras tree
+Z / X: Change colors for Mandelbrot and Julia fractals
 
-Use Esc button or cross in the top right corner for exiting the program
+Q: Expand the Pythagoras tree
 
-### Clean the object files and library file
+R: Change the Pythagoras tree color
+
+Esc: Exit the program
+
+### 🧹 Cleaning Up
+
+To remove object files and libraries:
+
 make fclean
-<!-- end:code block -->
 
 ## License
+
 This project is licensed under the GNU GENERAL PUBLIC LICENSE - see the LICENSE.md file for details
