@@ -38,14 +38,14 @@ To draw the fractals, use the following commands:
 
 🎮 Controls
 
-### Mouse Wheel: #### Zoom in/out
-### Arrow Keys: #### Move the view
-### Z / X: #### Change colors for Mandelbrot and Julia fractals
-### Q: #### Expand the Pythagoras tree
-### R: #### Change the Pythagoras tree color
-### Esc: #### Exit the program
+* ### Mouse Wheel: #### Zoom in/out
+* ### Arrow Keys: #### Move the view
+* ### Z / X: #### Change colors for Mandelbrot and Julia fractals
+* ### Q: #### Expand the Pythagoras tree
+* ### R: #### Change the Pythagoras tree color
+* ### Esc: #### Exit the program
 
-### 🧹 Cleaning Up
+## 🧹 Cleaning Up
 
 To remove object files and libraries:
 ```bash
