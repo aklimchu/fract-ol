@@ -32,7 +32,7 @@ Julia:
 
 Pythagoras Tree:
 
-‘‘‘bash
+```bash
 ./fractol pythagoras
 
 🎮 Controls
