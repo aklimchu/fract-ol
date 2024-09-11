@@ -22,9 +22,9 @@ make
 To draw the fractals, use the following commands:
 
 Mandelbrot:
-
+```bash
 ./fractol mandelbrot
-
+```
 Julia:
 ```bash
 ./fractol julia x-value y-value
