@@ -4,15 +4,15 @@ Explore Mandelbrot, Julia and Pythagoras tree fractals using 2D programming!
 
 ## 📚 Table of Contents
 - [Preview](#preview)
-  - [🚀 Installation](#-installation)
-  - [🛠️ Build the Program](#%EF%B8%8F-build-the-program)
-  - [🎮 Running the Program](#-running-the-program)
-    - [Mandelbrot](#mandelbrot)
-    - [Julia](#julia)
-    - [Pythagoras Tree](#pythagoras-tree)
-  - [✨ Controls](#-controls)
-  - [🧹 Cleaning Up](#-cleaning-up)
-  - [License](#license)
+- [🚀 Installation](#-installation)
+- [🛠️ Build the Program](#%EF%B8%8F-build-the-program)
+- [🎮 Running the Program](#-running-the-program)
+  - [Mandelbrot](#mandelbrot)
+  - [Julia](#julia)
+  - [Pythagoras Tree](#pythagoras-tree)
+- [✨ Controls](#-controls)
+- [🧹 Cleaning Up](#-cleaning-up)
+- [License](#license)
 
 ## Preview
 ![Fractol Preview](https://github.com/user-attachments/assets/3a9e852e-a9cf-4558-87b8-51f0909077e1)
